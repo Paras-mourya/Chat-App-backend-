@@ -19,14 +19,14 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     // Register STOMP endpoint with SockJS fallback
     @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry
-            .addEndpoint("/chat") // endpoint for SockJS
-          .setAllowedOrigins(
-    "http://localhost:5173",
-    "https://chat-app-8mit.vercel.app"
-)
- // Allow frontend (Vite dev server)
-            .withSockJS(); // fallback for older browsers
-    }
+public void registerStompEndpoints(StompEndpointRegistry registry) {
+    registry
+        .addEndpoint("/chat")
+        .setAllowedOriginPatterns(
+            "http://localhost:*",
+            "https://*.vercel.app"
+        )
+        .withSockJS();
+}
+
 }
