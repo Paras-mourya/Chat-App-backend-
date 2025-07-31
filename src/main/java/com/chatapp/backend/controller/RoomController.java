@@ -24,7 +24,11 @@ import com.chatapp.backend.repository.RoomRepository;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://chat-app-8mit.vercel.app"
+})
+
 public class RoomController {
     
     @Autowired

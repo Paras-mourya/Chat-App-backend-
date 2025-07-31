@@ -16,7 +16,11 @@ import com.chatapp.backend.payload.MessageRequest;
 import com.chatapp.backend.repository.RoomRepository;
 
 @Controller
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://chat-app-8mit.vercel.app"
+})
+
 public class ChatController {
     
     @Autowired

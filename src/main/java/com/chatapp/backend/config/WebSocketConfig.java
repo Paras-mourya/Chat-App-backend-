@@ -2,7 +2,9 @@ package com.chatapp.backend.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.web.socket.config.annotation.*;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 @Configuration
 @EnableWebSocketMessageBroker
@@ -20,7 +22,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry
             .addEndpoint("/chat") // endpoint for SockJS
-            .setAllowedOrigins("http://localhost:5173") // Allow frontend (Vite dev server)
+          .setAllowedOrigins(
+    "http://localhost:5173",
+    "https://chat-app-8mit.vercel.app"
+)
+ // Allow frontend (Vite dev server)
             .withSockJS(); // fallback for older browsers
     }
 }
